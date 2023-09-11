@@ -39,7 +39,7 @@ export default function Login() {
       <h1 className="text-3xl pr-5 mt-5 font-bold text-white"> &gt;Login</h1>
 
       <section className="flex flex-col mb-5">
-        <label className="hover:cursor-pointer mt-5 text-gray-300 font-semibold" htmlFor="email">
+        <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="email">
           E-mail
         </label>
         <input
@@ -50,7 +50,7 @@ export default function Login() {
           name="email"
           id="email"
         />
-        <label className="hover:cursor-pointer mt-5 text-gray-300 font-semibold" htmlFor="password">
+        <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="password">
           Password
         </label>
         <input
@@ -63,7 +63,7 @@ export default function Login() {
         />
       </section>
       <button
-        className={`roboto text-2xl rounded-xl bg-slate-600 p-2 pr-5 pl-5 mt-5 font-bold text-white`}
+        className={`transition-all roboto hover:bg-slate-500 text-2xl rounded-xl bg-slate-600 p-2 pr-5 pl-5 mt-5 font-bold text-white`}
       >
         Access
       </button>
