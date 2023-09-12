@@ -63,9 +63,9 @@ export default function Login() {
         />
       </section>
       <button
-        className={`transition-all roboto hover:bg-slate-500 text-2xl rounded-xl bg-slate-600 p-2 pr-5 pl-5 mt-5 font-bold text-white`}
+        className={`transition-all roboto hover:bg-slate-500 text-base rounded-xl primaryColor p-1 pr-16 pl-16 mt-5 font-bold text-black`}
       >
-        Access
+        Login
       </button>
     </form>
   );
