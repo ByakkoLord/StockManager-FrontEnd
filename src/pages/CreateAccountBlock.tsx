@@ -10,9 +10,9 @@ export default function Login() {
 
   async function handleSubmitSingUp(e: React.FormEvent) {
     e.preventDefault();
-    const response = await api.post('/createAccount', {
-      inputValue,
-      inputValue2,   
+    await api.post('/createAccount', {
+      email,
+      password,   
     })
 
 
@@ -20,8 +20,8 @@ export default function Login() {
   }
 
   // Page Function
-  const [inputValue, setInputValue] = useState('');
-  const [inputValue2, setInputValue2] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [inputValue3, setInputValue3] = useState('');
   const [height, setHeight] = useState(false);
   const [height2, setHeight2] = useState(false);
@@ -29,7 +29,7 @@ export default function Login() {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setInputValue(value);
+    setEmail(value);
 
     if (value) {
       setHeight(true);
@@ -43,7 +43,7 @@ export default function Login() {
   const handleInputChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
 
     const value2 = event.target.value;
-    setInputValue2(value2);
+    setPassword(value2);
 
 
     if (value2) {
@@ -79,7 +79,7 @@ export default function Login() {
           E-mail
         </label>
         <input
-          value={inputValue}
+          value={email}
           onChange={handleInputChange}
           className={`transition-all pb-1 text-gray-300 font-semibold focus:outline-none outline-none bg-transparent border-b-2 border-gray-400 ${height ? 'h-8' : 'h-0'}`}
           type="text"
@@ -91,7 +91,7 @@ export default function Login() {
           Password
         </label>
         <input
-          value={inputValue2}
+          value={password}
           onChange={handleInputChange2}
           className={`transition-all pb-1 text-gray-300 font-semibold focus:outline-none outline-none bg-transparent border-b-2 border-gray-400 ${height2 ? 'h-8' : 'h-0'}`}
           type="password"
