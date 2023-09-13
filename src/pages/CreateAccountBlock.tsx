@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
+
 
 export default function Login() {
   const [inputValue, setInputValue] = useState('');
@@ -66,6 +68,7 @@ export default function Login() {
           type="text"
           name="email"
           id="email"
+          required
         />
         <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="password">
           Password
@@ -77,6 +80,7 @@ export default function Login() {
           type="password"
           name="password"
           id="password"
+          required
         />
         <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="confirmPassword">
           Confirm Password
@@ -88,9 +92,11 @@ export default function Login() {
           type="password"
           name="confirmPassword"
           id="confirmPassword"
+          required
         />
       </section>
       
+      <Link className='text-slate-300 hover:text-blue-800 text-sm transition-all' to="/">I have an account</Link>
 
       <button
         className={`transition-all roboto hover:bg-slate-500 text-base rounded-xl primaryColor p-1 pr-16 pl-16 mt-5 font-bold text-black`}
