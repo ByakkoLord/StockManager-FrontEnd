@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
+//React Icons
+
 
 
 import api from '../services/api'
@@ -90,6 +92,7 @@ export default function Login() {
   };
 
   return (
+  <>
     <form className="flex flex-col justify-center p-5 items-center rounded-2xl shadow-2xl bg-gray-800">
       <h1 className="text-3xl pr-5 mt-5 font-bold text-white"> &gt;Login</h1>
 
@@ -141,8 +144,10 @@ export default function Login() {
         Create
       </button>
 
-      <ErrorMessage />
+      
     </form>
+    <ErrorMessage />
+  </>
 
     
   );
