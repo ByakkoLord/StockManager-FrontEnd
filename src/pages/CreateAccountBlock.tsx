@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
+
+
 import api from '../services/api'
 
+//Components
+
+import ErrorMessage from '../components/ErrorMessage';
 
 export default function Login() {
 
@@ -11,13 +16,25 @@ export default function Login() {
   const navigate = useNavigate();
   async function handleSubmitSingUp(e: React.FormEvent) {
     e.preventDefault();
-    await api.post('/createAccount', {
-      email,
-      password,   
-    })
-
-    navigate('/')
-
+    
+    if ( email && password && inputValue3) {
+      
+      await api.post('/createAccount', {
+        email,
+        password,   
+      })
+      navigate('/')
+    }
+    if(!email) {
+      alert('Preencha o campo de email')
+    }
+    if(!password) {
+      alert('Preencha o campo de senha')
+    }
+    if(!inputValue3) {
+      alert('Confirme sua senha')
+    }
+    
     
   }
 
@@ -115,6 +132,7 @@ export default function Login() {
         />
       </section>
       
+      
       <Link className='text-slate-300 hover:text-blue-800 text-sm transition-all' to="/">I have an account</Link>
 
       <button onClick={handleSubmitSingUp }
@@ -122,6 +140,8 @@ export default function Login() {
       >
         Create
       </button>
+
+      <ErrorMessage />
     </form>
 
     
