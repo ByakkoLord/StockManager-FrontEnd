@@ -1,10 +1,21 @@
+//Components
+
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
 
-//React Icons
+//Api
+
+
 
 
 export default function Login() {
+
+// Api Functions
+
+  
+
+// Page Functions
+
   const [inputValue, setInputValue] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [height, setHeight] = useState(false);
