@@ -54,6 +54,7 @@ export default function Login() {
           type="text"
           name="email"
           id="email"
+          required
         />
         <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="password">
           Password
@@ -65,6 +66,7 @@ export default function Login() {
           type="password"
           name="password"
           id="password"
+          required
         />
       </section>
 
@@ -77,8 +79,7 @@ export default function Login() {
       
 
       <button
-        className={`transition-all roboto hover:bg-slate-500 text-base rounded-xl primaryColor p-1 pr-16 pl-16 mt-5 font-bold text-black`}
-      >
+        className={`transition-all roboto hover:bg-slate-500 text-base rounded-xl primaryColor p-1 pr-16 pl-16 mt-5 font-bold text-black`}>
         Login
       </button>
     </form>
