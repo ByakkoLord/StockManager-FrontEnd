@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import api from '../services/api'
 
@@ -8,6 +8,7 @@ export default function Login() {
 
   //Api Functions
 
+  const navigate = useNavigate();
   async function handleSubmitSingUp(e: React.FormEvent) {
     e.preventDefault();
     await api.post('/createAccount', {
@@ -15,6 +16,7 @@ export default function Login() {
       password,   
     })
 
+    navigate('/')
 
     
   }
@@ -115,7 +117,7 @@ export default function Login() {
       
       <Link className='text-slate-300 hover:text-blue-800 text-sm transition-all' to="/">I have an account</Link>
 
-      <button onClick={handleSubmitSingUp}
+      <button onClick={handleSubmitSingUp }
         className={`transition-all roboto hover:bg-slate-500 text-base rounded-xl primaryColor p-1 pr-16 pl-16 mt-5 font-bold text-black`}
       >
         Create
