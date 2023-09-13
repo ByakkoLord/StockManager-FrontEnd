@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
 
+import api from '../services/api'
+
 
 export default function Login() {
+
+  //Api Functions
+
+  async function handleSubmitSingUp(e: React.FormEvent) {
+    e.preventDefault();
+    const response = await api.post('/createAccount', {
+      inputValue,
+      inputValue2,   
+    })
+
+
+    
+  }
+
+  // Page Function
   const [inputValue, setInputValue] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [inputValue3, setInputValue3] = useState('');
@@ -98,7 +115,7 @@ export default function Login() {
       
       <Link className='text-slate-300 hover:text-blue-800 text-sm transition-all' to="/">I have an account</Link>
 
-      <button
+      <button onClick={handleSubmitSingUp}
         className={`transition-all roboto hover:bg-slate-500 text-base rounded-xl primaryColor p-1 pr-16 pl-16 mt-5 font-bold text-black`}
       >
         Create
