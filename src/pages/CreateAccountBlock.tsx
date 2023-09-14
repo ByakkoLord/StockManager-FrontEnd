@@ -18,7 +18,7 @@ export default function Login() {
   async function handleSubmitSingUp(e: React.FormEvent) {
     e.preventDefault();
     
-    if ( email && password && inputValue3) {
+    if ( email && password && inputValue3 && inputValue3 === password) {
       
       await api.post('/createAccount', {
         email,
@@ -54,6 +54,18 @@ export default function Login() {
     }
     if(!inputValue3) {
       setErrorString('Fill in the confirm password field')
+      setAnimation('enterAnimation')
+      setShow(true)
+      setTimeout(() => {
+        setAnimation('exitAnimation')
+        setTimeout(() => {
+          setShow(false)
+        },1000)
+        
+      },2500)
+    }
+    if(inputValue3 !== password) {
+      setErrorString('Please use the same password')
       setAnimation('enterAnimation')
       setShow(true)
       setTimeout(() => {
