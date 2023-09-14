@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
-//React Icons
-
-
-
 import api from '../services/api'
 
 //Components
-
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from '../components/ErrorMessage'; 
 
 export default function Login() {
 
-  //Api Functions
+  const [errorString, setErrorString] = useState('');
+  const [show, setShow] = useState(false);
+  const [animation, setAnimation] = useState('');
 
+  //Api Functions
   const navigate = useNavigate();
+  
   async function handleSubmitSingUp(e: React.FormEvent) {
     e.preventDefault();
     
@@ -27,18 +26,46 @@ export default function Login() {
       })
       navigate('/')
     }
+    
     if(!email) {
-      alert('Preencha o campo de email')
+      setErrorString('Fill in the email field')
+      setAnimation('enterAnimation')
+      setShow(true)
+      setTimeout(() => {
+        setAnimation('exitAnimation')
+        setTimeout(() => {
+          setShow(false)
+        },1000)
+        
+      },2500)
+     
     }
     if(!password) {
-      alert('Preencha o campo de senha')
+      setErrorString('Fill in the password field')
+      setAnimation('enterAnimation')
+      setShow(true)
+      setTimeout(() => {
+        setAnimation('exitAnimation')
+        setTimeout(() => {
+          setShow(false)
+        },1000)
+        
+      },2500)
     }
     if(!inputValue3) {
-      alert('Confirme sua senha')
+      setErrorString('Fill in the confirm password field')
+      setAnimation('enterAnimation')
+      setShow(true)
+      setTimeout(() => {
+        setAnimation('exitAnimation')
+        setTimeout(() => {
+          setShow(false)
+        },1000)
+        
+      },2500)
     }
-    
-    
   }
+  
 
   // Page Function
   const [email, setEmail] = useState('');
@@ -146,7 +173,7 @@ export default function Login() {
 
       
     </form>
-    <ErrorMessage />
+    <ErrorMessage animation={animation} show={show} errorMessage={errorString}/>
   </>
 
     
