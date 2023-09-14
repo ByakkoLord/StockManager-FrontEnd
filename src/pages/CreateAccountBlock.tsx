@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
 import api from '../services/api'
@@ -15,12 +15,12 @@ export default function Login() {
   //Api Functions
   const navigate = useNavigate();
   
-  async function handleSubmitSingUp(e: React.FormEvent) {
+  async function handleSubmitSingUp(e: FormEvent) {
     e.preventDefault();
     
     if ( email && password && inputValue3 && inputValue3 === password) {
         try {
-          const response = await api.get(`/checkEmail/${email}`, {
+          const response = await api.get<string>(`/checkEmail/${email}`, {
             data: email
           });
           if (response.data) {
