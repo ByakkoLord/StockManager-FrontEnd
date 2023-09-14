@@ -19,12 +19,22 @@ export default function Login() {
     e.preventDefault();
     
     if ( email && password && inputValue3 && inputValue3 === password) {
+        try {
+          const response = await api.get(`/checkEmail/${email}`)
+          console.log(response.data)
+          if (response.data) {
+            alert('Account already exists')
+          }else {
+            await api.post('/createAccount', {
+              email,
+              password,   
+            })
+            navigate('/')
+          }
+        } catch (error) {
+          console.log(error)
+        }
       
-      await api.post('/createAccount', {
-        email,
-        password,   
-      })
-      navigate('/')
     }
     
     if(!email) {
@@ -93,10 +103,8 @@ export default function Login() {
 
     if (value) {
       setHeight(true);
-      console.log('Input contém texto:', value);
     } else {
       setHeight(false);
-      console.log('Input está vazio');
     }
 
   }
@@ -108,10 +116,8 @@ export default function Login() {
 
     if (value2) {
         setHeight2(true);
-        console.log('Input contém texto:', value2);
       } else {
         setHeight2(false);
-        console.log('Input está vazio');
       }
   };
 
@@ -123,10 +129,8 @@ export default function Login() {
 
     if (value3) {
         setHeight3(true);
-        console.log('Input contém texto:', value3);
       } else {
         setHeight3(false);
-        console.log('Input está vazio');
       }
   };
 
