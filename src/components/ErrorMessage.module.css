@@ -1,0 +1,25 @@
+.enterAnimation{
+    animation: enter forwards ease-in-out 0.5s;
+}
+
+.exitAnimation{
+    animation: exit forwards ease-in-out 0.5s;
+}
+
+@keyframes enter {
+    0%{
+        left: -500px;
+    }
+    100%{
+        left: 30px;
+    }
+}
+
+@keyframes exit {
+    0%{
+        left: 30px;
+    }
+    100%{
+        left: -500px;
+    }
+}
