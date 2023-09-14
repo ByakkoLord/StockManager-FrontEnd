@@ -20,7 +20,7 @@ const { errorMessage, show, animation } = prop
             <IconContext.Provider value={{ size: "2rem", className: "text-white mr-2" }}>
                 <BiErrorCircle />
             </IconContext.Provider>
-            <p className="poppins text-xl mr-2 font-bold text-white">{errorMessage}</p>
+            <p className="poppins text-xl mr-2 font-semibold text-white">{errorMessage}</p>
         </div>
     )
 }
