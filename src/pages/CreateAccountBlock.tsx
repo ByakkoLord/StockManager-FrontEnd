@@ -18,7 +18,7 @@ export default function Login() {
   async function handleSubmitSingUp(e: FormEvent) {
     e.preventDefault();
     
-    if ( email && password && inputValue3 && inputValue3 === password) {
+    if ( email && password && inputValue3 && inputValue3 === password && password.length >= 6) {
         try {
           const response = await api.get<string>(`/checkEmail/${email}`, {
             data: email
@@ -85,6 +85,18 @@ export default function Login() {
     }
     if(inputValue3 !== password) {
       setErrorString('Please use the same password')
+      setAnimation('enterAnimation')
+      setShow(true)
+      setTimeout(() => {
+        setAnimation('exitAnimation')
+        setTimeout(() => {
+          setShow(false)
+        },1000)
+        
+      },2500)
+    }
+    if(password.length < 6){
+      setErrorString('Password must have at least 6 characters')
       setAnimation('enterAnimation')
       setShow(true)
       setTimeout(() => {
@@ -173,6 +185,7 @@ export default function Login() {
           id="password"
           required
         />
+        <span className='text-slate-300 text-xs pt-1'>At least 6 characters</span>
         <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="confirmPassword">
           Confirm Password
         </label>
