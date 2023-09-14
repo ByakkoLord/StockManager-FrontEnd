@@ -25,7 +25,7 @@ function App() {
         className: "global-class-name" }}>
         <BsFillBoxSeamFill/>
       </IconContext.Provider>
-      <h1 className='text-4xl mt-5 font-bold text-white'>Stock Manager</h1>
+      <h1 className='poppins text-4xl mt-5 font-bold text-white'>Stock Manager</h1>
       </div>
       <section className='flex w-1/2 justify-center items-center'>
         <LoginBlock/>
