@@ -20,10 +20,19 @@ export default function Login() {
     
     if ( email && password && inputValue3 && inputValue3 === password) {
         try {
-          const response = await api.get(`/checkEmail/${email}`)
-          console.log(response.data)
+          const response = await api.get(`/checkEmail/${email}`, {
+            data: email
+          });
           if (response.data) {
-            alert('Account already exists')
+            setErrorString('This email is already cadastrated')
+            setAnimation('enterAnimation')
+            setShow(true)
+            setTimeout(() => {
+            setAnimation('exitAnimation')
+            setTimeout(() => {
+            setShow(false)
+        },1000)
+      },2500)
           }else {
             await api.post('/createAccount', {
               email,
