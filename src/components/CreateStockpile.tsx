@@ -30,7 +30,8 @@ export default function CreateStockpile(props: Props) {
                         </div>
                     </section>
                     <div className="w-full mt-14 mb-10 flex justify-evenly">
-                        <button onClick={(e) => {e.preventDefault(); setDisplayCancelStockpile2(false)}} className="hover:scale-105 transition-all bg-red-700 w-1/3 h-10 rounded-lg poppins text-xl font-semibold text-white shadow-lg">Cancel</button>
+                        
+                        <button onClick={() => {setDisplayCancelStockpile2(false)}} className="hover:scale-105 transition-all bg-red-700 w-1/3 h-10 rounded-lg poppins text-xl font-semibold text-white shadow-lg">Cancel</button>
                         <button className="hover:scale-105 transition-all primaryColor w-1/3 h-10 rounded-lg poppins text-xl font-semibold text-black shadow-lg">Create</button>
                     </div>
                 </form>
