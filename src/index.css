@@ -13,6 +13,9 @@
     .primaryColor{
         background-color: #ceed2e;
     }
+    .translucent_black{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
     
 }
