@@ -16,7 +16,7 @@ export default function Home(){
 
     return(
         <>
-        <div className="bg-gray-900 w-screen h-screen">
+        <div className="bg-gray-900 w-screen h-screen overflow-hidden">
             <Header/>
             <section className='flex'>
                 <Aside/>
