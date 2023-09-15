@@ -8,13 +8,13 @@ export default function Aside() {
                 <h2 className='text-center mt-4 poppins text-2xl text-white'>Stockpiles</h2>
                 <section className='flex flex-col mt-5 w-full h-full overflow-auto'>
                     <button className='hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all flex h-14 ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600'>
-                        StockName
+                        Doors
                     </button>
                     <button className='hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all flex h-14 ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600'>
-                        StockName
+                        Tables
                     </button>
                     <button className='hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all flex h-14 ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600'>
-                        StockName
+                        Chairs
                     </button>
                 </section>
 
