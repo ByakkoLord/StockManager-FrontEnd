@@ -4,6 +4,14 @@
 @tailwind utilities;
 
 @layer base{
+    ::-webkit-scrollbar {
+        background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #666666;
+        border-radius: 15px;
+    }
+
     .roboto {
         font-family: 'Roboto', sans-serif;
     }
