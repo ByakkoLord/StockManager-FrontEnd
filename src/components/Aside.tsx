@@ -29,12 +29,6 @@ export default function Aside() {
                    <StockpilesInfo key={data._id} stockpileName={data.stockpile} typeName={data.type} enterpriseName={data.enterprise}/>
                 ))}
                     
-                    <button className='hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all flex h-14 ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600'>
-                        Tables
-                    </button>
-                    <button className='hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all flex h-14 ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600'>
-                        Chairs
-                    </button>
                 </section>
 
                 <section className="flex justify-center items-center border-t-2 border-gray-600 ">
