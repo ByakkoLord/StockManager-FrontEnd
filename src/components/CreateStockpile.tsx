@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import api from '../services/api'
 import CreateStockpileBtn from './CreateStockpileBtn'
+import ErrorMessage from '../components/ErrorMessage';
 
 interface Props {
     displayCreateStockpile: boolean
@@ -16,26 +17,79 @@ export default function CreateStockpile(props: Props) {
     const  [typeName, setTypeName] = useState('')
     const  [enterpriseName, setEnterpriseName] = useState('')
 
-    async function handleSubmit() {
-        await api.post('/createStockpile', {
-            stockpile: stockpileName,
-            type: typeName,
-            enterprise: enterpriseName,
-        })
-        setDisplayCancelStockpile2(false)
-        setStockpileName('')
-        setTypeName('')
-        setEnterpriseName('')
+    const [errorString, setErrorString] = useState('')
+    const [show, setShow] = useState(false);
+    const [animation, setAnimation] = useState('');
 
+    async function handleSubmit(e: React.FormEvent) {
+        
+        if (stockpileName.length > 14 || stockpileName === '') {
+            e.preventDefault()
+            
+            setErrorString('The name has to be lower than 14 characters and not empty')
+            setAnimation('enterAnimation')
+            setShow(true)
+            setTimeout(() => {
+              setAnimation('exitAnimation')
+              setTimeout(() => {
+                setShow(false)
+              },1000)
+              
+            },2500)
 
+        }else if (typeName.length > 10 || typeName === '') {
+            e.preventDefault()
+            
+            setErrorString('The type has to be lower than 10 characters and not empty')
+            setAnimation('enterAnimation')
+            setShow(true)
+            setTimeout(() => {
+              setAnimation('exitAnimation')
+              setTimeout(() => {
+                setShow(false)
+              },1000)
+              
+            },2500)
 
+        }else if (enterpriseName.length > 14 || enterpriseName === '') {
+            e.preventDefault()
+            
+            setErrorString('The enterprise has to be lower than 14 characters and not empty')
+            setAnimation('enterAnimation')
+            setShow(true)
+            setTimeout(() => {
+              setAnimation('exitAnimation')
+              setTimeout(() => {
+                setShow(false)
+              },1000)
+              
+            },2500)
+
+        }else {
+            await api.post('/createStockpile', {
+                stockpile: stockpileName,
+                type: typeName,
+                enterprise: enterpriseName,
+            })
+    
+
+            setDisplayCancelStockpile2(false)
+            setStockpileName('')
+            setTypeName('')
+            setEnterpriseName('')
+        }
+
+        
     }
+
+
 
     
     const [displayCancelStockpile2, setDisplayCancelStockpile2] = useState(true)
 
 
     return (
+        <>
         <section className={`absolute z-50 w-screen h-screen top-0 left-0 translucent_black ${displayCancelStockpile2 ? 'flex' : 'hidden'} ${displayCreateStockpile ? 'flex' : 'hidden'}`}>
             
             <section className={`absolute flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 m-auto bg-gray-800 shadow-2xl rounded-2xl w-1/3`}>
@@ -52,10 +106,10 @@ export default function CreateStockpile(props: Props) {
                              className="focus:outline-none bg-gray-700 rounded-lg w-2/5 text-white poppins pl-3 pr-3"
                             />
                         </div>
-                        <div className="flex justify-around items-center mt-5 mb-5 ">
+                        <div className="flex justify-around items-center mt-5 mb-5">
                             <label htmlFor="stockpileName" className="poppins text-xl text-white">Product type</label>
                             <input type="text"
-                             onChange={(e) => setTypeName(e.target.value)}
+                             onChange={(e) => {setTypeName(e.target.value)}}
                              value={typeName}
                              id="type"
                              name="type"
@@ -81,6 +135,9 @@ export default function CreateStockpile(props: Props) {
                 </form>
             
             </section>
+            <ErrorMessage animation={animation} show={show} errorMessage={errorString}/>
         </section>
+        
+        </>
     )
 }
