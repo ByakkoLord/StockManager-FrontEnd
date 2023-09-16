@@ -23,7 +23,7 @@ export default function Aside() {
     return(
         <aside className='flex flex-col bg-gray-800 w-1/4 h-screen shadow-xl pt-16'>
                 <h2 className='text-center mt-4 poppins text-2xl text-white'>Stockpiles</h2>
-                <section className='flex flex-col mt-5 w-full h-full overflow-auto'>
+                <section className='flex flex-col mt-5 w-full h-full overflow-y-auto'>
 
                 {allStockpiles.map(data => (
                    <StockpilesInfo key={data._id} stockpileName={data.stockpile} typeName={data.type} enterpriseName={data.enterprise}/>

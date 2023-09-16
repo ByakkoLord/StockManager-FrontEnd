@@ -26,8 +26,8 @@ export default function StockpilesInfo(prop: Props) {
     }
 
     return (
-        <article onClick={handleChangeInfoVIs} className={`${style[Animation]} h-14  flex-col hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all flex  ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600`}>
-            <h4>{stockpileName}</h4>
+        <article onClick={handleChangeInfoVIs} className={`${style[Animation]} flex flex-col  h-14 hover:scale-105 hover:border-gray-400 hover:text-slate-300 cursor-pointer rounded-sm transition-all   ml-4 mr-4 justify-center items-center border-b-2 poppins text-xl text-slate-400  border-gray-600`}>
+            <h4 className='mt-2 mb-2'>{stockpileName}</h4>
                 <section className={`${display ? 'flex' : 'hidden'} flex-col justify-center items-center`}>
                     <div className="flex">
                         <h5 className="mr-2 text-slate-300">Type:</h5><span>{typeName}</span>
