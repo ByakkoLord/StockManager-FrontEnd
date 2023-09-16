@@ -9,6 +9,7 @@ import { useState } from 'react'
 export default function Home(){
 
     const [displayCreateStockpile, setDisplayCreateStockpile] = useState(false)
+    
 
     const handleCreateStockpile = () => {
         setDisplayCreateStockpile(true)
@@ -35,7 +36,9 @@ export default function Home(){
                 </section>
             </section>
 
-            <CreateStockpile displayCreateStockpile={displayCreateStockpile}/> 
+            
+                <CreateStockpile  displayCreateStockpile={displayCreateStockpile}/> 
+            
         </div>
         </>
     )   

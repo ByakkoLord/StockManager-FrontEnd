@@ -8,6 +8,8 @@ interface Props {
 }
 
 export default function CreateStockpile(props: Props) {
+    const { displayCreateStockpile } = props
+    
     // API Functions
 
     const  [stockpileName, setStockpileName] = useState('')
@@ -24,9 +26,12 @@ export default function CreateStockpile(props: Props) {
         setStockpileName('')
         setTypeName('')
         setEnterpriseName('')
+
+
+
     }
 
-    const { displayCreateStockpile } = props
+    
     const [displayCancelStockpile2, setDisplayCancelStockpile2] = useState(true)
 
 
