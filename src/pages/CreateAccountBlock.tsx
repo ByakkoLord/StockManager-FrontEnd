@@ -1,12 +1,18 @@
 import React, { useState, FormEvent } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
+import { useContext } from 'react'
+import { TokenContext } from '../contexts/Token'
+
 import api from '../services/api'
 
 //Components
 import ErrorMessage from '../components/ErrorMessage'; 
 
 export default function Login() {
+
+  const {setUsername, generateToken, secretKey, token } = useContext(TokenContext)
+
 
   const [errorString, setErrorString] = useState('');
   const [show, setShow] = useState(false);
@@ -17,6 +23,7 @@ export default function Login() {
   
   async function handleSubmitSingUp(e: FormEvent) {
     e.preventDefault();
+    
     
     if ( email && password && inputValue3 && inputValue3 === password && password.length >= 6) {
         try {
@@ -31,16 +38,24 @@ export default function Login() {
             setAnimation('exitAnimation')
             setTimeout(() => {
             setShow(false)
-        },1000)
-      },2500)
-          }else {
+              },1000)
+            },2500)
+          }else{
+            setUsername(email)
+            generateToken(email, secretKey)
+            
+            console.log(token)
+
             await api.post('/createAccount', {
               email,
-              password,   
-            })
+              password,
+              token
+            }
+            )
+
             navigate('/')
           }
-        } catch (error) {
+        }catch (error) {
           console.log(error)
         }
       
