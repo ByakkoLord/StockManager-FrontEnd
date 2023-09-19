@@ -3,11 +3,17 @@ import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
 import CreateStockpile from '../../components/CreateStockpile'
 
+import { useContext } from 'react'
+import { TokenContext } from '../../contexts/Token'
+
 import { useState } from 'react'
 
 
 
 export default function Home(){
+
+    const token = useContext(TokenContext)
+    console.log(token)
 
     const [displayCreateStockpile, setDisplayCreateStockpile] = useState(false)
     
