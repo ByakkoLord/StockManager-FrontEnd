@@ -3,16 +3,44 @@ import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
 import CreateStockpile from '../../components/CreateStockpile'
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext } from 'react'
-import { TokenContext } from '../../contexts/Token'
+import { useState, useEffect } from 'react'
+import api from '../../services/api'
 
 export default function Home(){
     
     const navigate = useNavigate()
-    const { token } = useContext(TokenContext)
-    if (localStorage.getItem('token') !== token){
-        navigate('/')
-    }
+    const tokenLocal = localStorage.getItem('token')
+    
+    useEffect(() => {
+        async function checkToken() {
+          if(tokenLocal){
+            try {
+                const response = await api.post('/checkToken', {
+                  token: tokenLocal
+                });
+                console.log(response.data);
+        
+                if (response.data === "Token is valid") {
+                    console.log(response.data);
+                    
+                }else if (response.data === "Token is invalid"){
+                    console.log(response.data);
+                    localStorage.removeItem('token')
+                    navigate('/')
+                }
+              } catch (error) {
+                console.error('Erro ao verificar o token:', error);
+                
+              }
+          }else{
+            navigate('/')
+          }
+        }
+    
+        
+        checkToken();
+      }, [tokenLocal, navigate]);
+    
 
     const [displayCreateStockpile, setDisplayCreateStockpile] = useState(false)
     const handleCreateStockpile = () => {
