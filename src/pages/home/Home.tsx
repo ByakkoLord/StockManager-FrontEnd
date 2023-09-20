@@ -2,20 +2,19 @@ import Header from '../../components/Header'
 import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
 import CreateStockpile from '../../components/CreateStockpile'
-
-
-
-import { useState } from 'react'
-
-
+import { useNavigate } from 'react-router-dom'
+import { useState, useContext } from 'react'
+import { TokenContext } from '../../contexts/Token'
 
 export default function Home(){
-
     
+    const navigate = useNavigate()
+    const { token } = useContext(TokenContext)
+    if (localStorage.getItem('token') !== token){
+        navigate('/')
+    }
 
     const [displayCreateStockpile, setDisplayCreateStockpile] = useState(false)
-    
-
     const handleCreateStockpile = () => {
         setDisplayCreateStockpile(true)
     }
