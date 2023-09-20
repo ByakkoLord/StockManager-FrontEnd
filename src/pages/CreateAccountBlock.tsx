@@ -1,7 +1,5 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useContext } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
-
-import { useContext } from 'react'
 import { TokenContext } from '../contexts/Token'
 
 import api from '../services/api'
@@ -42,14 +40,14 @@ export default function Login() {
             },2500)
           }else{
             setUsername(email)
-            generateToken(email, secretKey)
+            const generatedToken = generateToken(email, secretKey)
             
             console.log(token)
 
             await api.post('/createAccount', {
               email,
               password,
-              token
+              token: generatedToken
             }
             )
 
