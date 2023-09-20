@@ -9,7 +9,7 @@ import ErrorMessage from '../components/ErrorMessage';
 
 export default function Login() {
 
-  const {setUsername, generateToken, secretKey, token } = useContext(TokenContext)
+  const {setUsername, generateToken, secretKey} = useContext(TokenContext)
 
 
   const [errorString, setErrorString] = useState('');
@@ -42,7 +42,7 @@ export default function Login() {
             setUsername(email)
             const generatedToken = generateToken(email, secretKey)
             
-            console.log(token)
+            
 
             await api.post('/createAccount', {
               email,
