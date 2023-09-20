@@ -76,7 +76,13 @@ export default function Login() {
         },1000)
       },2500)
           }else if (response.data === 'Email and Password are correct') {
-            navigate('/home')
+             await api.get('/allUsers', {
+              data: {
+                token: response.data
+              }
+            })
+            console.log(response.data)
+            //navigate('/home')
           }
         } catch (error) {
           console.log(error)
