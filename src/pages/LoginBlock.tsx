@@ -1,7 +1,8 @@
 //Components
 
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useContext } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
+import { TokenContext } from '../contexts/Token'
 
 //Api
 
@@ -17,6 +18,8 @@ export default function Login() {
 
 
 // Page Functions
+
+  const { setToken } = useContext(TokenContext)
 
   const [errorString, setErrorString] = useState('');
   const [show, setShow] = useState(false);
@@ -76,13 +79,20 @@ export default function Login() {
         },1000)
       },2500)
           }else if (response.data === 'Email and Password are correct') {
-             await api.get('/allUsers', {
-              data: {
-                token: response.data
-              }
-            })
-            console.log(response.data)
-            //navigate('/home')
+             try {
+                const response = await api.post('/allUsers', {
+                  email,
+                  password
+                })
+                console.log(response.data)
+                localStorage.setItem('token', response.data)
+                setToken(response.data);
+             }catch (error) {
+               console.log(error)
+             }
+            
+            
+            navigate('/home')
           }
         } catch (error) {
           console.log(error)
