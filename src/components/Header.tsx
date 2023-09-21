@@ -2,12 +2,20 @@ import { IconContext } from 'react-icons/'
 import { BsFillBoxSeamFill } from 'react-icons/bs'
 import { AiOutlinePlus } from 'react-icons/ai'
 import CreateStockpile from '../components/CreateStockpile'
-
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 
 export default function Header() {
     const [displayCreateStockpile, setDisplayCreateStockpile] = useState(false)
+    const [option, setOption] = useState(false)
+
+    const navigate = useNavigate()
+
+    function handleSingOut() {
+        localStorage.removeItem('token')
+        navigate('/login')
+    }
 
     return (
         <>
@@ -34,10 +42,14 @@ export default function Header() {
                         </IconContext.Provider>
                     
                 </div>
-                <div className='flex w-1/2 pr-5 justify-end items-center'>
+                <div className=' flex w-1/2 pr-5 justify-end items-center'>
                     <span className='poppins text-xl mr-5 text-white'>ByakkoLord</span>
-                    <div className='flex rounded-full w-12 h-12 bg-red-600 justify-center items-center'><span className='poppins text-2xl text-white'>BL</span></div>
+                    <button onClick={() => option ? setOption(false) : setOption(true)} className='hover:scale-105 transition-all flex rounded-full w-12 h-12 bg-red-600 justify-center items-center'><span className='poppins text-2xl text-white'>BL</span></button>
                 </div>
+
+                <section className={`absolute rounded-xl right-5 top-20 bg-gray-800 ${option ? "flex" : "hidden"} w-36 h-11 justify-center items-center`}>
+                    <button onClick={handleSingOut} className='poppins text-xl text-white font-semibold'>Sing Out</button>
+                </section>
             </header>
             
             <CreateStockpile displayCreateStockpile={displayCreateStockpile}/>
