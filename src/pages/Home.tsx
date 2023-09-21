@@ -1,10 +1,10 @@
-import Header from '../../components/Header'
-import Aside from '../../components/Aside'
-import Footer from '../../components/Footer'
-import CreateStockpile from '../../components/CreateStockpile'
+import Header from '../components/Header'
+import Aside from '../components/Aside'
+import Footer from '../components/Footer'
+import CreateStockpile from '../components/CreateStockpile'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import api from '../../services/api'
+import api from '../services/api'
 
 export default function Home(){
     
