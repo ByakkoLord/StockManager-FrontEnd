@@ -70,6 +70,7 @@ export default function CreateStockpile(props: Props) {
                 stockpile: stockpileName,
                 type: typeName,
                 enterprise: enterpriseName,
+                token: localStorage.getItem('token')
             })
     
 
