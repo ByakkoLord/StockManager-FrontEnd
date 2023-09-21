@@ -7,7 +7,8 @@ import StockpilesInfo from './StockpilesInfo'
 
 export default function Aside() {
 
-    const [allStockpiles, setAllStockpiles] = useState<{_id: string, stockpile: string, type: string, enterprise: string}[]>([])
+    const [allStockpiles, setAllStockpiles] = useState<{_id: string, stockpile: string, type: string, enterprise: string, token: string}[]>([])
+    const localToken = localStorage.getItem('token')
     
 
     useEffect(() => {
@@ -25,7 +26,7 @@ export default function Aside() {
                 <h2 className='text-center mt-4 poppins text-2xl text-white'>Stockpiles</h2>
                 <section className='flex flex-col mt-5 w-full h-full overflow-y-auto'>
 
-                {allStockpiles.map(data => (
+                {allStockpiles.filter(data => data.token === localToken).map(data => (
                    <StockpilesInfo key={data._id} stockpileName={data.stockpile} typeName={data.type} enterpriseName={data.enterprise}/>
                 ))}
                     
