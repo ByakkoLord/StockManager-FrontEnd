@@ -7,14 +7,16 @@ import { TokenProvider } from "./contexts/Token.tsx";
 
 import Login from "./pages/Login.tsx";
 import CreateAccount from "./pages/CreateAccount.tsx";
-import Home from "./pages/home/Home.tsx";
+import Home from "./pages/Home.tsx";
+import AuthPage from "./pages/AuthPage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <TokenProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<AuthPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/createAccount" element={<CreateAccount />} />
           <Route path="/home" element={<Home />} />
         </Routes>
