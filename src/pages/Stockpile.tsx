@@ -3,7 +3,7 @@ import Aside from '../components/Aside'
 import Footer from '../components/Footer'
 import Item from '../components/Item'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../services/api'
 
 export default function Stockpile(){
@@ -40,6 +40,20 @@ export default function Stockpile(){
         
         checkToken();
       }, [tokenLocal, navigate]);
+
+      useEffect(() => {
+          async () => {
+            const response = await api.get('/allStockpiles')
+            setAllStockpiles(response.data)
+            console.log(response.data)}
+      })
+
+      const [ allStockpiles, setAllStockpiles ] = useState<{_id: string, stockpile: string, type: string, enterprise: string, token: string}[]>([])
+      async function handleDeleteStockpile(){
+        await api.delete(`/deleteStockpile/${allStockpiles[1].stockpile}`)
+      }
+
+      const [allItems, setAllItems] = useState<{_id: string, stockpile: string, type: string, enterprise: string, token: string}[]>([])
     
 
     return(
@@ -60,7 +74,7 @@ export default function Stockpile(){
                             <Item/>
                         </section>
                         <section className='mb-2 pt-2 flex justify-between items-center w-full h-14 border-t-2 border-gray-500'>
-                            <button className='hover:scale-105 transition-all bg-red-500 w-48 h-8 rounded-lg poppins text-xl font-semibold text-white shadow-lg'>Delete Stockpile</button>
+                            <button onClick={handleDeleteStockpile} className='hover:scale-105 transition-all bg-red-500 w-48 h-8 rounded-lg poppins text-xl font-semibold text-white shadow-lg'>Delete Stockpile</button>
                             <div className='flex justify-between items-center'>
                                 <button onClick={() => navigate('/home')} className='mr-3 hover:scale-105 transition-all bg-blue-500 w-48 h-8 rounded-lg poppins text-xl font-semibold text-white shadow-lg'>Close Stockpile</button>
                                 <button className='hover:scale-105 transition-all bg-yellow-500 w-48 h-8 rounded-lg poppins text-xl font-semibold text-white shadow-lg'>Delete Item</button>
