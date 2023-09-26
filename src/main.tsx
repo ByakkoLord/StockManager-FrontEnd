@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/login" element={<Login />} />
           <Route path="/createAccount" element={<CreateAccount />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/home/stockpile" element={<Stockpile />} />
+          <Route path="/home/stockpile/:stockpile" element={<Stockpile />} />
         </Routes>
       </Router>
     </TokenProvider>
