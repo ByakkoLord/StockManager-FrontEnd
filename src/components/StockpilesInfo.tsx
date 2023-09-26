@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import style from "./StockpileInfo.module.css";
 
 interface Props {
@@ -44,7 +45,7 @@ export default function StockpilesInfo(prop: Props) {
           <span>{enterpriseName}</span>
         </div>
         <button className="hover:scale-105 shadow-lg mt-5 mb-5 w-1/3 rounded-lg font-semibold primaryColor text-black">
-          Use
+         <Link to={`/stockpiles/${stockpileName}`} >Use</Link>
         </button>
       </section>
     </article>
