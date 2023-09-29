@@ -1,6 +1,6 @@
 //Components
 
-import React, { useState, FormEvent, useContext } from 'react';
+import React, { useState, FormEvent, useContext, useEffect } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 import { TokenContext } from '../contexts/Token'
 
@@ -87,6 +87,14 @@ export default function Login() {
                 console.log(response.data)
                 localStorage.setItem('token', response.data)
                 setToken(response.data);
+
+                
+                  const response2 = await api.get(`/readUsername/${email}`)
+                  localStorage.setItem('username' , response2.data)
+                  console.log(response2.data)
+                
+
+                
              }catch (error) {
                console.log(error)
              }
@@ -98,6 +106,9 @@ export default function Login() {
           console.log(error)
         }
       }
+
+        
+      
     
 
   return (
