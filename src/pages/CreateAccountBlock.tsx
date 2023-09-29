@@ -45,6 +45,7 @@ export default function Login() {
             
 
             await api.post('/createAccount', {
+              username,
               email,
               password,
               token: generatedToken
@@ -127,9 +128,23 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [inputValue3, setInputValue3] = useState('');
+  const [username, setUsernames] = useState('');
   const [height, setHeight] = useState(false);
   const [height2, setHeight2] = useState(false);
   const [height3, setHeight3] = useState(false);
+  const [height4, setHeight4] = useState(false);
+
+  const handleInputChange4 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setUsernames(value);
+
+    if (value) {
+      setHeight4(true);
+    } else {
+      setHeight4(false);
+    }
+
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -174,6 +189,18 @@ export default function Login() {
       <h1 className="text-3xl pr-5 mt-5 font-bold text-white"> &gt;Login</h1>
 
       <section className="flex flex-col mb-5">
+        <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="username">
+          Username
+        </label>
+        <input
+          value={username}
+          onChange={handleInputChange4}
+          className={`transition-all pb-1 text-gray-300 font-semibold focus:outline-none outline-none bg-transparent border-b-2 border-gray-400 ${height4 ? 'h-8' : 'h-0'}`}
+          type="text"
+          name="username"
+          id="username"
+          required
+        />
         <label className="hover:cursor-pointer hover:text-white mt-5 text-gray-300 font-semibold" htmlFor="email">
           E-mail
         </label>
